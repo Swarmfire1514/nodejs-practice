@@ -1,7 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
 const bookModel = require("./models/book.model.js")
-const userModel = require("./models/user.model.js")
 
 const sequelize = new Sequelize("postgres", "postgres.zwavmabkwlcebcxqfbvz", "nEyYPXkXsg5G1Vet", {
   host: "aws-0-ap-south-1.pooler.supabase.com",
