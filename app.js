@@ -1,20 +1,31 @@
 const express = require('express')
+const { books } = require('./backend(db)/connection.js')
 const app = express()
+app.use(express.json())
 
-require("./backend(db)/connection.js")
-
-app.get("/books", (req, res) => {
-  res.json([
-    { id: 1, title: "1984", author: "George Orwell" },
-    { id: 2, title: "To Kill a Mockingbird", author: "Harper Lee" },
-    { id: 3, title: "The Great Gatsby", author: "F. Scott Fitzgerald" }
-  ])
+app.get("/books", async (req, res) => {
+  
+  const datas = await books.findAll()
+    res.json({
+      message : "Books fetched successfully",
+      datas
+    })
 })
 
-app.post("/books", (req, res) => {
-  const newBook = req.body
-  // Here you would typically save the new book to a database
-  res.status(201).json(newBook)
+app.post("/books", async (req, res) => {
+    const { bookName, bookPrice, bookAuthor, bookGenre } = req.body
+    console.log(bookAuthor)
+    await books.create({
+      bookName,
+      bookPrice,
+      bookAuthor,
+      bookGenre
+    })
+    res.json({
+      message : "Book added successfully",
+      data : req.body
+    })
+
 })
 
 app.delete("/books/:id", (req, res) => {

@@ -7,7 +7,6 @@ const sequelize = new Sequelize("postgres", "postgres.zwavmabkwlcebcxqfbvz", "nE
   host: "aws-0-ap-south-1.pooler.supabase.com",
   port: 6543,
   dialect: "postgres",
-  logging: false,
 });
 //DATABASE_URL="postgresql://postgres.zwavmabkwlcebcxqfbvz:nEyYPXkXsg5G1Vet@aws-0-ap-south-1.pooler.supabase.com:6543/postgres"
 
@@ -23,8 +22,7 @@ const db={}
 db.Sequelize=Sequelize
 db.sequelize=sequelize
 
-db.book=bookModel(sequelize,DataTypes)
-db.user=userModel(sequelize,DataTypes)
+db.books=bookModel(sequelize,DataTypes)
 
 sequelize.sync({ alter: false}) // Use { force: true } to drop and recreate tables (Risk for data loss)
   .then(() => {
