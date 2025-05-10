@@ -41,18 +41,28 @@ exports.deleteBooks = async (req, res) => {
 
 exports.updateBooks = async (req, res) => {
   const bookId = req.params.id
-  const updatedBook = req.body
-  await books.update(updatedBook, {
+  const { bookName, bookPrice, bookAuthor, bookGenre } = req.body
+
+  books.update({
+    bookName,
+    bookPrice,
+    bookAuthor,
+    bookGenre
+  }, {
     where: {
       id: bookId
     }
+  }).then(() => {
+    console.log("Book updated successfully")
+  }).catch((err) => {
+    console.log(err)
   })
+
   res.json({
-    message : "Book updated successfully",
-    bookId,
-    updatedBook
+    data : req.body,
   })
 }
+
 
 exports.fetchSingleBook = async (req, res) => {
   const bookId = req.params.id
