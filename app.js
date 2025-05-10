@@ -1,7 +1,9 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
-const bookRoutes = require("./routes/bookRoutes.js")
+const bookRoutes = require("./backend_db/routes/bookRoutes.js")
 app.use(express.json())
+app.use(cors())
 
 
 /*app.get("/books", fetchBooks)

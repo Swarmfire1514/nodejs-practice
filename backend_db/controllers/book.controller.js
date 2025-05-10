@@ -1,4 +1,4 @@
-const { books } = require("../backend_db/connection")
+const { books } = require("../connection")
 
 
 exports.fetchBooks = async (req, res) => {
