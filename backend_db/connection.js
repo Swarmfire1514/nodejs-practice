@@ -7,7 +7,7 @@ const sequelize = new Sequelize("postgres", "postgres.zwavmabkwlcebcxqfbvz", "nE
   port: 6543,
   dialect: "postgres",
 });
-//DATABASE_URL="postgresql://postgres.zwavmabkwlcebcxqfbvz:nEyYPXkXsg5G1Vet@aws-0-ap-south-1.pooler.supabase.com:6543/postgres"
+
 
 sequelize.authenticate()
   .then(() => {
